@@ -8,8 +8,15 @@ export interface BookingRequest {
     partyCompositions: PartyComposition[]
 }
 
+export interface BookingDestination {
+    name: string
+    gateway: string
+}
+
 export interface BookingResponse {
     holidays: Holiday[]
+    destination: BookingDestination
+    mixedArrivalAirports: boolean
 }
 
 export interface Holiday {
@@ -54,6 +61,7 @@ export interface HotelContent {
 
 export interface HotelImage {
     RESULTS_CAROUSEL: Image
+    IMAGE_DESCRIPTION: string
 }
 
 export interface Image {

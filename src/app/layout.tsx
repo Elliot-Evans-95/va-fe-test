@@ -25,7 +25,8 @@ export default function RootLayout({
                 alt="Virgin Atlantic Holidays logo"
                 width={130}
                 height={50}
-                priority
+                priority={true}
+                loader={undefined}
               />
             </Link>
           </div>

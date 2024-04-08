@@ -8,9 +8,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
 	reactStrictMode: true,
 	swcMinify: true,
-	reactStrictMode: false,
 	typescript: {
-		ignoreBuildErrors: true,
+		ignoreBuildErrors: false,
+	},
+	images: {
+		loader: 'custom',
+		loaderFile: './src/utils/image-loader.ts',
 	},
 	async headers() {
 		return [
