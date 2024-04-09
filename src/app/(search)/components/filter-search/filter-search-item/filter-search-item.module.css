@@ -1,0 +1,7 @@
+.filterSearchItem__wrapper {
+    display: grid;
+    grid-template-columns: 1rem auto;
+    grid-gap: 0 1rem;
+    cursor: pointer;
+    color: var(--token-color-colour-text-interactive);
+}

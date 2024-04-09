@@ -1,22 +1,32 @@
-'use client';
+"use client";
 
-import {BookingResponse} from "@/types/booking";
-import {useReducer} from "react";
-import FilterSearchComponent from "@/app/components/filter-search/filter-search.component";
-import SearchResultsComponent from "@/app/components/search-results/search-results.component";
-import {searchReducer} from "@/app/(search)/utils/search-reducer";
+import { BookingResponse } from "@/types/booking";
+import { useReducer } from "react";
+import { searchReducer } from "@/utils/reducer/search-reducer";
+import { FilterSearchComponent } from "@/app/(search)/components/filter-search";
+import { SearchResultsComponent } from "@/app/(search)/components/search-results";
 
-interface SearchResultsContainerProps {
-    response: BookingResponse;
+interface SearchResultsContainerProperties {
+  response: BookingResponse;
 }
 
-export default function SearchResultsContainer({ response }: SearchResultsContainerProps) {
-    const [state, dispatch] = useReducer(searchReducer, { results: response, initialResults: response });
+export function SearchResultsContainer({
+  response,
+}: SearchResultsContainerProperties) {
+  const [state, dispatch] = useReducer(searchReducer, {
+    initialSearchResults: response,
+    searchResults: response,
+    appliedFilters: {
+      hotelFacilities: [],
+      starRating: [],
+      pricePerPerson: [],
+    },
+  });
 
-    return (
-        <>
-            <FilterSearchComponent searchFilterActions={dispatch} />
-            <SearchResultsComponent response={state} />
-        </>
-    )
+  return (
+    <>
+      <FilterSearchComponent searchFilterActions={dispatch} />
+      <SearchResultsComponent state={state} />
+    </>
+  );
 }

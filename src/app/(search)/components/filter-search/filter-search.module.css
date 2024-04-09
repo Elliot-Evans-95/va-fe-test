@@ -25,14 +25,6 @@
     gap: 1rem;
 }
 
-.filterSearch__checkbox____wrapper {
-    display: grid;
-    grid-template-columns: 1rem auto;
-    grid-gap: 0 1rem;
-    cursor: pointer;
-    color: var(--token-color-colour-text-interactive);
-}
-
 @media (min-width: 1200px) {
     .filterSearch {
         padding: 2rem;
