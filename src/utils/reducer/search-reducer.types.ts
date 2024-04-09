@@ -1,5 +1,10 @@
-import { AppliedFilters } from "@/utils/filter-holidays-results-by-applied-filters";
 import { BookingResponse } from "@/types";
+
+export interface AppliedFilters {
+  hotelFacilities: string[];
+  starRating: string[];
+  pricePerPerson: [min: number, max: number][];
+}
 
 export type SearchResultsState = {
   appliedFilters: AppliedFilters;

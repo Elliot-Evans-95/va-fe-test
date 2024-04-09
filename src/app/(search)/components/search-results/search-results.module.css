@@ -22,14 +22,27 @@
 
 .searchResult__holiday____overviewTitle {
     text-align: center;
+    margin-top: 0;
 }
 
 .searchResult__holiday____details {
     display: flex;
     flex-direction: column;
-    padding: 2rem 0;
+    padding: 2rem 0 0 0;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+.searchResult__holiday____detailsList {
+    margin: 0;
+}
+
+.searchResult__holiday____detailsTerm {
+    margin-bottom: 0.25rem;
+}
+
+.searchResult__holiday____detailsDescription {
+    margin: 0 0 0.75rem 0;
 }
 
 .searchResult__holiday____button {
@@ -58,7 +71,7 @@
     }
 
     .searchResult__holiday____details {
-        padding: 4.5rem 2rem 0 2rem;
+        padding: 3.5rem 2rem 0 2rem;
         width: 100%;
     }
 }

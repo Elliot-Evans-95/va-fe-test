@@ -1,10 +1,5 @@
 import { BookingResponse, Holiday } from "@/types";
-
-export interface AppliedFilters {
-  hotelFacilities: string[];
-  starRating: string[];
-  pricePerPerson: [min: number, max: number][];
-}
+import { AppliedFilters } from "@/utils/reducer/search-reducer.types";
 
 export const filterHolidaysResultsByAppliedFilters = (
   initialResults: BookingResponse,

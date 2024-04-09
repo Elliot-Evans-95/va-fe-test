@@ -1,9 +1,10 @@
-import { BookingRequest, PartyComposition } from "@/types/booking";
 import { DateTime } from "luxon";
-import styles from "./page.module.css";
-import { DATE_FORMATS } from "@/utils/constants";
 import Link from "next/link";
+
+import styles from "./page.module.css";
+import { BookingRequest, PartyComposition } from "@/types/booking";
 import { Rooms } from "@/utils/composition.service";
+import { DATE_FORMATS } from "@/utils/constants";
 
 export default function Home() {
   const samples: BookingRequest[] = [
@@ -54,7 +55,7 @@ export default function Home() {
           return (
             <li key={index} className={styles.listItem}>
               <Link
-                href={`/results?bookingType=${sample?.bookingType}&location=${sample?.location}&gateway=${sample?.gateway}&departureDate=${sample?.departureDate}&duration=${sample?.duration}${sample?.partyCompositions?.map((party: PartyComposition, index_: number) => `&partyCompositions=a${party?.adults}`).join("&")}`}
+                href={`/results?bookingType=${sample?.bookingType}&location=${sample?.location}&gateway=${sample?.gateway}&departureDate=${sample?.departureDate}&duration=${sample?.duration}${sample?.partyCompositions?.map((party: PartyComposition) => `&partyCompositions=a${party?.adults}`).join("&")}`}
               >
                 {`
                     ${sample?.location} from ${sample?.gateway} (${sample?.duration} nights, ${Rooms.prettyFormat(sample?.partyCompositions)}) 

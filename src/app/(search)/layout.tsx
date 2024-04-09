@@ -1,5 +1,6 @@
-import styles from "./layout.module.css";
 import type { ReactNode } from "react";
+
+import styles from "./layout.module.css";
 
 export const runtime = "edge";
 

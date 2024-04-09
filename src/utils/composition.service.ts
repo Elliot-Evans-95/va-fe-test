@@ -1,4 +1,5 @@
-import { PartyComposition } from "@/types/booking";
+/* eslint-disable @typescript-eslint/no-namespace, @typescript-eslint/ban-ts-comment */
+
 import {
   Parser,
   Result,
@@ -10,6 +11,8 @@ import {
   sepBy,
   of,
 } from "parsimmon";
+
+import { PartyComposition } from "@/types/booking";
 
 const oneOrMoreAdults: Parser<number> = seqMap(
   string("a"),

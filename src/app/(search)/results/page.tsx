@@ -1,10 +1,11 @@
-import { Suspense } from "react";
-import Loading from "./loading";
-import { Rooms } from "@/utils/composition.service";
-import { BookingResponse } from "@/types/booking";
 import type { Metadata } from "next";
-import { getSearchData } from "@/utils/services/get-search-data";
+import { Suspense } from "react";
+
+import Loading from "./loading";
 import { SearchResultsContainer } from "@/app/(search)/containers";
+import { BookingResponse } from "@/types/booking";
+import { Rooms } from "@/utils/composition.service";
+import { getSearchData } from "@/utils/services/get-search-data";
 
 export async function generateMetadata({
   searchParams,

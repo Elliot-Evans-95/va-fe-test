@@ -1,10 +1,10 @@
 import { Dispatch, useCallback } from "react";
 
 import styles from "./filter-search.module.css";
-import { FilterDataType } from "@/types/filter-search";
-import { SearchResultsAction } from "@/utils/reducer/search-reducer.types";
 import { FilterSearchItemComponent } from "@/app/(search)/components/filter-search/filter-search-item";
 import { filterSearchData } from "@/app/(search)/components/filter-search/filter-search.data";
+import { FilterDataType } from "@/types/filter-search";
+import { SearchResultsAction } from "@/utils/reducer/search-reducer.types";
 
 interface FilterSearchComponentProperties {
   searchFilterActions: Dispatch<SearchResultsAction>;

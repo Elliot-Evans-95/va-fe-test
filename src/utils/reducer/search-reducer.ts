@@ -1,4 +1,4 @@
-import { filterHolidaysResultsByAppliedFilters } from "@/utils/filter-holidays-results-by-applied-filters";
+import { filterHolidaysResultsByAppliedFilters } from "@/utils/reducer/filter-holidays-results-by-applied-filters";
 import {
   SearchResultsAction,
   SearchResultsState,
@@ -36,7 +36,7 @@ export function searchReducer(
     case "REMOVE_PRICE_PER_PERSON_FILTER": {
       const appliedFilters = {
         pricePerPerson: state.appliedFilters.pricePerPerson.filter(
-          (pricePerPersonRange) => {
+          (pricePerPersonRange: [min: number, max: number]) => {
             const [min, max] = pricePerPersonRange;
             const [minToBeRemoved, maxToBeRemoved] = action.pricePerPerson;
 
@@ -89,7 +89,7 @@ export function searchReducer(
       const appliedFilters = {
         pricePerPerson: state.appliedFilters.pricePerPerson,
         hotelFacilities: state.appliedFilters.hotelFacilities.filter(
-          (facility) =>
+          (facility: string) =>
             facility.toLowerCase() !== action.facility.toLowerCase(),
         ),
         starRating: state.appliedFilters.starRating,
@@ -135,7 +135,7 @@ export function searchReducer(
         pricePerPerson: state.appliedFilters.pricePerPerson,
         hotelFacilities: state.appliedFilters.hotelFacilities,
         starRating: state.appliedFilters.starRating.filter(
-          (rating) => rating !== action.rating,
+          (rating: string) => rating !== action.rating,
         ),
       };
 

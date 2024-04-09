@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-
-import "./globals.css";
 import Link from "next/link";
 import type { ReactNode } from "react";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Virgin Atlantic | Front End Coding Test",

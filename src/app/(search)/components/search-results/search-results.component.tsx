@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import styles from "./search-results.module.css";
+import {
+  stringToCurrencyString,
+  stringToDisplayDateString,
+} from "@/utils/helpers";
 import { useMediaQuery } from "@/utils/hooks";
-import Link from "next/link";
-// import { DateTime } from "luxon";
-import { DATE_FORMATS } from "@/utils/constants";
 import { SearchResultsState } from "@/utils/reducer/search-reducer.types";
 
 interface SearchResultsComponentProperties {
@@ -61,43 +63,57 @@ export function SearchResultsComponent({
               )}
             </div>
 
-            {/* TODO: use DL and DT and DD */}
             <div className={styles.searchResult__holiday____details}>
-              <div>
-                <b>{holiday.hotel.boardBasis}</b>
-                <p>
-                  <em>{holiday.hotel.content.vRating}</em> out of 5 rating
-                </p>
+              <dl className={styles.searchResult__holiday____detailsList}>
+                <dt className={styles.searchResult__holiday____detailsTerm}>
+                  Holiday type:
+                </dt>
+                <dd
+                  className={styles.searchResult__holiday____detailsDescription}
+                >
+                  <em>{holiday.hotel.boardBasis}</em>
+                </dd>
 
-                {/*<p>*/}
-                {/*  Date you selected:{" "}*/}
-                {/*  <em>*/}
-                {/*    {DateTime.fromFormat(*/}
-                {/*      holiday.selectedDate,*/}
-                {/*      DATE_FORMATS.API_DATE,*/}
-                {/*    ).toFormat(DATE_FORMATS.DISPLAY_DATE)}*/}
-                {/*  </em>*/}
-                {/*</p>*/}
-                {/*<p>*/}
-                {/*  Date departing:{" "}*/}
-                {/*  <em>*/}
-                {/*    {DateTime.fromFormat(*/}
-                {/*      holiday.departureDate,*/}
-                {/*      DATE_FORMATS.API_DATE,*/}
-                {/*    ).toFormat(DATE_FORMATS.DISPLAY_DATE)}*/}
-                {/*  </em>*/}
-                {/*</p>*/}
-              </div>
+                <dt className={styles.searchResult__holiday____detailsTerm}>
+                  Star rating:
+                </dt>
+                <dd
+                  className={styles.searchResult__holiday____detailsDescription}
+                >
+                  <em>{holiday.hotel.content.vRating}</em> out of 5 rating
+                </dd>
+
+                <dt className={styles.searchResult__holiday____detailsTerm}>
+                  Date you selected:
+                </dt>
+                <dd
+                  className={styles.searchResult__holiday____detailsDescription}
+                >
+                  {stringToDisplayDateString(holiday.selectedDate)}
+                </dd>
+
+                <dt className={styles.searchResult__holiday____detailsTerm}>
+                  Date departing:
+                </dt>
+                <dd
+                  className={styles.searchResult__holiday____detailsDescription}
+                >
+                  {stringToDisplayDateString(holiday.departureDate)}
+                </dd>
+              </dl>
               <div>
-                <p>
-                  Price Per Person:{" "}
-                  <em>
-                    {new Intl.NumberFormat("en-GB", {
-                      style: "currency",
-                      currency: "GBP",
-                    }).format(holiday.pricePerPerson)}
-                  </em>
-                </p>
+                <dl className={styles.searchResult__holiday____detailsList}>
+                  <dt className={styles.searchResult__holiday____detailsTerm}>
+                    Price Per Person:
+                  </dt>
+                  <dd
+                    className={
+                      styles.searchResult__holiday____detailsDescription
+                    }
+                  >
+                    {stringToCurrencyString(holiday.pricePerPerson)}
+                  </dd>
+                </dl>
 
                 <Link
                   aria-label={`Click here to view details of Hotel ${holiday.hotel.name}`}
