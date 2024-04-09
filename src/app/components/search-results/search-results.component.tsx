@@ -1,111 +1,73 @@
-import { BookingResponse } from "@/types/booking";
-import { Rooms } from "@/utils/composition.service";
+'use client'
+
 import Image from 'next/image'
-import {filterResultsByRating} from "@/utils/filterResultsByRating";
-import {filterResultsByPricePerPerson} from "@/utils/filterResultsByPricePerPerson";
+import {TodoState} from "@/app/(search)/utils/search-reducer";
 
-async function getData(params: { [key: string]: string | string[] | undefined }) {
-  const body = {
-    bookingType: params.bookingType,
-    direct: false,
-    location: params.location,
-    departureDate: params.departureDate,
-    duration: params.duration,
-    gateway: params.gateway,
-    partyCompositions: Rooms.parseAndConvert([params.partyCompositions as string]),
-  };
+import styles from './search-results.module.css'
+import {useMediaQuery} from "@/utils/hooks";
+import Link from "next/link";
 
-  const res = await fetch(
-    "https://www.virginholidays.co.uk/cjs-search-api/search",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    }
-  );
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
+interface SearchResultsComponentProps {
+  response: TodoState
 }
 
-export default async function SearchResultsComponent({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const response: BookingResponse = await getData(searchParams);
-  // const testFilter = await filterResultsByRating(response, '4')
-  const testFilter = await filterResultsByPricePerPerson(response, 2500)
-
-  console.log('testFilter: ', testFilter);
+export default function SearchResultsComponent({ response }: SearchResultsComponentProps) {
+  const desktopImage = useMediaQuery('(min-width: 500px)')
 
   return (
-      <div>
-        <aside>
-          <h3>Filter your search</h3>
-          <div>
-            <p>Price per person</p>
-            <ol>
-              <li>Over £1000</li>
-              <li>£100 - £500</li>
-              <li>£0 - £100</li>
-            </ol>
-          </div>
-          <div>
-            <p>Hotel facilities</p>
-            <ol>
-              <li>Hotel facilities list</li>
-            </ol>
-          </div>
-          <div>
-            <p>Star Rating</p>
-            <ol>
-              <li>5 Star</li>
-              <li>4 Star</li>
-              <li>3 Star</li>
-              <li>2 Star</li>
-              <li>1 Star</li>
-            </ol>
-          </div>
-        </aside>
-        <section>
-          <h2>{testFilter?.holidays?.length} results found</h2>
-          <h3>from: {testFilter?.destination.gateway} to: {response?.destination.name}</h3>
-          {testFilter?.holidays?.map((holiday) => {
-            return (
-                <div key={holiday.hotel.id} style={{marginBottom: '4rem'}}>
+        <section className={styles.searchResult}>
+            <hgroup>
+                <h2>{response.results.holidays?.length} Holidays found</h2>
+                <p>From {response.results.destination.gateway} into {response.results.destination.name}</p>
+            </hgroup>
+            {response.results.holidays?.map((holiday) => {
+                return (
+                    <div key={holiday.hotel.id} className={styles.searchResult__holiday}>
+                    <div className={styles.searchResult__holiday____overview}>
+                              <h4 className={styles.searchResult__holiday____overviewTitle}>{holiday.hotel.name}</h4>
+                              {holiday.hotel.content.images.length > 0 ?
+                                  desktopImage ? <Image
+                                      src={holiday.hotel.content.images[0].RESULTS_CAROUSEL.url}
+                                      alt={holiday.hotel.content.images[0].IMAGE_DESCRIPTION ? holiday.hotel.content.images[0].IMAGE_DESCRIPTION : `Photo of ${holiday.hotel.name} hotel`}
+                                      width={460}
+                                      height={310}
+                                  /> : <Image
+                                      src={holiday.hotel.content.images[0].RESULTS_CAROUSEL.url}
+                                      alt={holiday.hotel.content.images[0].IMAGE_DESCRIPTION ? holiday.hotel.content.images[0].IMAGE_DESCRIPTION : `Photo of ${holiday.hotel.name} hotel`}
+                                      width={230}
+                                      height={155}
+                                  /> :
+                                  <div>No Images of {holiday.hotel.name}</div>
+                              }
+                      </div>
 
-                  <div>
-                    <p>Name: {holiday.hotel.name}</p>
-                    <p>boardBasis: {holiday.hotel.boardBasis}</p>
-                    <p>rating: {holiday.hotel.content.vRating}</p>
-                    <p>price per person: {holiday.pricePerPerson}</p>
-                    {holiday.hotel.content.images.length > 0 ?
-                        <Image
-                            src={holiday.hotel.content.images[0].RESULTS_CAROUSEL.url}
-                            alt={holiday.hotel.content.images[0].IMAGE_DESCRIPTION ? holiday.hotel.content.images[0].IMAGE_DESCRIPTION: `Photo of ${holiday.hotel.name} hotel`}
-                            width={460}
-                            height={310}
-                        /> :
-                        <div>No Images of {holiday.hotel.name}</div>
-                    }
+                      <div className={styles.searchResult__holiday____details}>
+                          <div>
+                              <b>{holiday.hotel.boardBasis}</b>
+                              <p><em>{holiday.hotel.content.vRating}</em> out of 5 rating</p>
+
+                              <p>Date you selected: <em>{holiday.selectedDate}</em></p>
+                              <p>Date departing: <em>{holiday.departureDate}</em></p>
+                          </div>
+                          <div>
+                              <p>Price Per Person: <em>{new Intl.NumberFormat('en-GB', {
+                                  style: 'currency',
+                                  currency: 'GBP'
+                              }).format(
+                                  holiday.pricePerPerson,
+                              )}</em></p>
+
+                              <Link
+                                  aria-label={`Click here to view details of Hotel ${holiday.hotel.name}`}
+                                  className={styles.searchResult__holiday____button}
+                                  href={`/${holiday.hotel.id}/details`}>View details
+                              </Link>
+                          </div>
+                      </div>
                   </div>
-
-                  <p>departureDate: {holiday.departureDate}</p>
-                  <p>selectedDate: {holiday.selectedDate}</p>
-                  <p>flyingClubMiles: {holiday.flyingClubMiles}</p>
-                  <p>tierPoints: {holiday.tierPoints}</p>
-                  <p>totalPrice: {holiday.totalPrice}</p>
-                </div>
-            )
+              )
           })}
 
         </section>
-      </div>
   );
 }

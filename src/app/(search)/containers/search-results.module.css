@@ -1,8 +1,6 @@
 .searchResult {
     display: flex;
     flex-direction: column;
-    grid-area: content;
-    padding: 0 4rem;
 }
 
 .searchResult__holiday {
@@ -28,37 +26,14 @@
     display: flex;
     flex-direction: column;
     padding: 2rem 0;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.searchResult__holiday____button {
-    display: block;
-    background: var(--token-color-colour-brand-red);
-    color: var(--token-color-colour-text-inverted-primary);
-    transition: background 300ms ease-in-out;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    width: 100%;
-    text-align: center;
-}
-
-.searchResult__holiday____button:hover {
-    background: #c40909;
 }
 
 @media (min-width: 1200px) {
-    .searchResult {
-        padding: 0;
-    }
-
     .searchResult__holiday {
         flex-direction: row;
     }
 
     .searchResult__holiday____details {
-        padding: 4.5rem 2rem 0 2rem;
-        width: 100%;
+        padding: 2rem;
     }
 }

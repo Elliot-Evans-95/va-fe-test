@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en-gb">
       <body>
         <header>
           <div className={`wrapper`}>
@@ -26,7 +26,6 @@ export default function RootLayout({
                 width={130}
                 height={50}
                 priority={true}
-                loader={undefined}
               />
             </Link>
           </div>

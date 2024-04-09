@@ -1,0 +1,38 @@
+.searchLayout {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.searchLayout__header {
+    margin-bottom: 1rem;
+    box-shadow: none;
+    text-align: center;
+    padding: 1rem;
+}
+
+.searchLayout__content {
+        display: grid;
+    width: 100%;
+
+        grid-template-areas:
+    "aside aside aside"
+    "content content content";
+
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 72rem 1fr;
+
+    grid-gap: 4rem 0;
+}
+
+@media (min-width: 1200px) {
+    .searchLayout__content {
+        grid-template-areas:
+        "aside content content"
+        "aside content content";
+
+        grid-template-columns: 4fr 10fr;
+        grid-template-rows:  1fr 1fr;
+        grid-gap: 4rem;
+    }
+}

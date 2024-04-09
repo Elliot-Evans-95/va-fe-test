@@ -1,14 +1,5 @@
-import {BookingResponse} from "@/types/booking";
+import {Holiday} from "@/types/booking";
 
-export const filterResultsByRating = (bookingData: BookingResponse, rating: string) => {
-    const hotelsWithRating = bookingData.holidays.filter((holiday) => {
-        console.log('holiday.hotel.content.vRating: ', holiday.hotel.content.vRating);
-
-        return String(holiday.hotel.content.vRating) === rating
-    })
-
-    return {
-        ...bookingData,
-        holidays: hotelsWithRating
-    }
-}
+export const filterResultsByRating = (holidays: Holiday[], rating: string) =>
+    holidays.filter((holiday) =>
+        String(holiday.hotel.content.vRating) === rating)
