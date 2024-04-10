@@ -1,0 +1,77 @@
+.searchResultItem {
+    display: flex;
+    flex-direction: column;
+    grid-area: content;
+    padding: 0 4rem;
+}
+
+.searchResultItem__holiday {
+    margin-bottom: 4rem;
+    border: 1px solid var(--token-color-colour-border-decorative);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResultItem__holiday____overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchResultItem__holiday____overviewTitle {
+    text-align: center;
+    margin-top: 0;
+}
+
+.searchResultItem__holiday____details {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0 0 0;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.searchResultItem__holiday____detailsList {
+    margin: 0;
+}
+
+.searchResultItem__holiday____detailsTerm {
+    margin-bottom: 0.25rem;
+}
+
+.searchResultItem__holiday____detailsDescription {
+    margin: 0 0 0.75rem 0;
+}
+
+.searchResultItem__holiday____button {
+    display: block;
+    background: var(--token-color-colour-brand-red);
+    color: var(--token-color-colour-text-inverted-primary);
+    transition: background 300ms ease-in-out;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+}
+
+.searchResultItem__holiday____button:hover {
+    background: #c40909;
+}
+
+@media (min-width: 1200px) {
+    .searchResultItem {
+        padding: 0;
+    }
+
+    .searchResultItem__holiday {
+        flex-direction: row;
+    }
+
+    .searchResultItem__holiday____details {
+        padding: 3.5rem 2rem 0 2rem;
+        width: 100%;
+    }
+}

@@ -14,28 +14,32 @@ export function FilterSearchComponent({
   searchFilterActions,
 }: FilterSearchComponentProperties) {
   const handleCheckboxChange = useCallback(
-    (checked: boolean, type: FilterDataType, value: any) => {
+    (
+      checked: boolean,
+      type: FilterDataType,
+      value: string | [min: number, max: number],
+    ) => {
       const actionForType = {
         STAR_RATING: () =>
           searchFilterActions({
             type: checked
               ? "ADD_STAR_RATING_FILTER"
               : "REMOVE_STAR_RATING_FILTER",
-            rating: value,
+            rating: value as string,
           }),
         HOTEL_FACILITIES: () =>
           searchFilterActions({
             type: checked
               ? "ADD_HOTEL_FACILITIES_FILTER"
               : "REMOVE_HOTEL_FACILITIES_FILTER",
-            facility: value,
+            facility: value as string,
           }),
         PRICE_PER_PERSON: () =>
           searchFilterActions({
             type: checked
               ? "ADD_PRICE_PER_PERSON_FILTER"
               : "REMOVE_PRICE_PER_PERSON_FILTER",
-            pricePerPerson: value,
+            pricePerPerson: value as [min: number, max: number],
           }),
       };
 
