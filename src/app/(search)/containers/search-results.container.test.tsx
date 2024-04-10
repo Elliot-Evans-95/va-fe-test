@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 
 import { SearchResultsContainer } from "./search-results.container";
-import { mockBookingResponseWithHolidays } from "../../../utils/mocks";
+import { mockBookingResponseWithHolidays } from "@/utils/mocks";
 
 jest.mock("./../components/filter-search", () => {
   const originalModule = jest.requireActual("./../components/filter-search");
