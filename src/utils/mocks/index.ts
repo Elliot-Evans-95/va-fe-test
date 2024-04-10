@@ -14,4 +14,5 @@ export {
   mockRemoveStarRating,
   mockAddHotelFacility,
   mockRemoveHotelFacility,
+  mockFilterSearchData,
 } from "./mocks";

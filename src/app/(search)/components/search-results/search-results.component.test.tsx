@@ -2,7 +2,7 @@ import { screen, render } from "@testing-library/react";
 import type { ReactNode } from "react";
 
 import { SearchResultsComponent } from "./search-results.component";
-import { mockState } from "../../../../utils/mocks";
+import { mockState } from "@/utils/mocks";
 
 jest.mock(
   "next/link",

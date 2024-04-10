@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 
 import { SearchResultsItemImageComponent } from "./search-results-item-image.component";
-import { mockBookingResponseWithHolidays } from "../../../../utils/mocks";
+import { mockBookingResponseWithHolidays } from "@/utils/mocks";
 
 jest.mock(
   "next/image",

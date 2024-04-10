@@ -1,8 +1,8 @@
 import { Dispatch, useCallback } from "react";
 
 import styles from "./filter-search.module.css";
-import { FilterSearchItemComponent } from "@/app/(search)/components/filter-search/filter-search-item";
 import { filterSearchData } from "@/app/(search)/components/filter-search/filter-search.data";
+import { FilterSearchItemComponent } from "@/app/(search)/components/filter-search-item";
 import { FilterDataType } from "@/types/filter-search";
 import { SearchResultsAction } from "@/utils/reducer/search-reducer.types";
 

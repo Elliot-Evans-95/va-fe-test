@@ -1,11 +1,11 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 
 import { FilterSearchComponent } from "./filter-search.component";
-import { FilterDataType, FilterSearchItem } from "../../../../types";
+import { FilterDataType, FilterSearchItem } from "@/types";
 
-jest.mock("@/app/(search)/components/filter-search/filter-search-item", () => {
+jest.mock("@/app/(search)/components/filter-search-item", () => {
   const originalModule = jest.requireActual(
-    "@/app/(search)/components/filter-search/filter-search-item",
+    "@/app/(search)/components/filter-search-item",
   );
 
   return {
@@ -128,5 +128,4 @@ describe("<FilterSearchComponent>", () => {
       type: "ADD_HOTEL_FACILITIES_FILTER",
     });
   });
-
 });

@@ -50,7 +50,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      pricePerPerson: [mockAddPricePerPerson.pricePerPerson],
+      pricePerPerson: [[1000, 2000]],
     });
   });
 
@@ -71,7 +71,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      pricePerPerson: [mockAddPricePerPerson.pricePerPerson],
+      pricePerPerson: [[1000, 2000]],
     });
   });
 
@@ -80,7 +80,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      hotelFacilities: [mockAddHotelFacility.facility],
+      hotelFacilities: ["Bar"],
     });
   });
 
@@ -101,7 +101,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      hotelFacilities: [mockAddHotelFacility.facility],
+      hotelFacilities: ["Bar"],
     });
   });
 
@@ -110,7 +110,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      starRating: [mockAddStarRating.rating],
+      starRating: ["4"],
     });
   });
 
@@ -131,7 +131,7 @@ describe("search reducer", () => {
 
     expect(updatedState.appliedFilters).toStrictEqual({
       ...mockAppliedNoFilters,
-      starRating: [mockAddStarRating.rating],
+      starRating: ["4"],
     });
   });
 
@@ -150,7 +150,7 @@ describe("search reducer", () => {
       mockState.initialSearchResults,
       {
         ...mockAppliedNoFilters,
-        starRating: [mockAddStarRating.rating],
+        starRating: ["4"],
       },
     );
   });

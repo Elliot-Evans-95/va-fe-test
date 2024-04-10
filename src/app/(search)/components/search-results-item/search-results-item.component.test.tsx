@@ -2,7 +2,7 @@ import { screen, render } from "@testing-library/react";
 import type { ReactNode } from "react";
 
 import { SearchResultsItemComponent } from "./search-results-item.component";
-import { mockBookingResponseWithHolidays } from "../../../../utils/mocks";
+import { mockBookingResponseWithHolidays } from "@/utils/mocks";
 
 jest.mock(
   "next/link",

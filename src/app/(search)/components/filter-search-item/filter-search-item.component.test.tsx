@@ -1,11 +1,12 @@
 import { screen, render, fireEvent } from "@testing-library/react";
 
 import { FilterSearchItemComponent } from "./filter-search-item.component";
-import { FilterDataType } from "../../../../../types";
-import { filterSearchData } from "../filter-search.data";
+import type { FilterDataType } from "@/types";
+import { mockFilterSearchData } from "@/utils/mocks";
 
 describe("<FilterSearchItemComponent>", () => {
-  const mockFilterSearchData = filterSearchData.pricePerPerson[0];
+  const mockFilterSearchDataPricePerPerson =
+    mockFilterSearchData.pricePerPerson[0];
   const mockCheckboxChangeCallback = jest.fn(
     (
       checked: boolean,
@@ -22,7 +23,7 @@ describe("<FilterSearchItemComponent>", () => {
     render(
       <FilterSearchItemComponent
         checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
+        item={mockFilterSearchDataPricePerPerson}
       />,
     );
 
@@ -35,7 +36,7 @@ describe("<FilterSearchItemComponent>", () => {
     render(
       <FilterSearchItemComponent
         checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
+        item={mockFilterSearchDataPricePerPerson}
       />,
     );
 
@@ -54,7 +55,7 @@ describe("<FilterSearchItemComponent>", () => {
     render(
       <FilterSearchItemComponent
         checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
+        item={mockFilterSearchDataPricePerPerson}
       />,
     );
 
@@ -69,7 +70,7 @@ describe("<FilterSearchItemComponent>", () => {
     render(
       <FilterSearchItemComponent
         checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
+        item={mockFilterSearchDataPricePerPerson}
       />,
     );
 
@@ -89,7 +90,7 @@ describe("<FilterSearchItemComponent>", () => {
     render(
       <FilterSearchItemComponent
         checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
+        item={mockFilterSearchDataPricePerPerson}
       />,
     );
 
