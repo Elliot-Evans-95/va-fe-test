@@ -1,21 +1,18 @@
-import type { Metadata } from 'next'
-import Image from 'next/image'
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import type { ReactNode } from "react";
 
-import './globals.css'
-import Link from 'next/link'
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: 'Virgin Atlantic | Front End Coding Test',
-  description: 'Created by Virgin Atlantic Digital Team',
-}
+  title: "Virgin Atlantic | Front End Coding Test",
+  description: "Created by Virgin Atlantic Digital Team",
+};
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-gb">
       <body>
         <header>
           <div className={`wrapper`}>
@@ -25,7 +22,7 @@ export default function RootLayout({
                 alt="Virgin Atlantic Holidays logo"
                 width={130}
                 height={50}
-                priority
+                priority={true}
               />
             </Link>
           </div>
@@ -33,5 +30,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  )
+  );
 }

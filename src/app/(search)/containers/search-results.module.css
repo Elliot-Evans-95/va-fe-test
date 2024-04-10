@@ -1,0 +1,39 @@
+.searchResult {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResult__holiday {
+    margin-bottom: 4rem;
+    border: 1px solid var(--token-color-colour-border-decorative);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchResult__holiday____overview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchResult__holiday____overviewTitle {
+    text-align: center;
+}
+
+.searchResult__holiday____details {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+}
+
+@media (min-width: 1200px) {
+    .searchResult__holiday {
+        flex-direction: row;
+    }
+
+    .searchResult__holiday____details {
+        padding: 2rem;
+    }
+}

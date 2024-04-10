@@ -1,0 +1,13 @@
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    grid-area: content;
+    padding: 0 4rem;
+}
+
+@media (min-width: 1200px) {
+    .searchResult {
+        padding: 0;
+        width: calc(100% - 4rem);
+    }
+}
