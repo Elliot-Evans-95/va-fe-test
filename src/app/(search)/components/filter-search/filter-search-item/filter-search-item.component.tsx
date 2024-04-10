@@ -31,7 +31,7 @@ export function FilterSearchItemComponent({
     <label htmlFor={item.name} className={styles.filterSearchItem__wrapper}>
       <input
         type="checkbox"
-        id={String(item.id)}
+        id={item.name}
         name={item.name}
         checked={checked}
         onChange={handleCheckboxChange}

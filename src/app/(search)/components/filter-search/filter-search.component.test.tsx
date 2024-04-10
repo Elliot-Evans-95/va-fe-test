@@ -129,5 +129,4 @@ describe("<FilterSearchComponent>", () => {
     });
   });
 
-  // TODO: add remove filter tests
 });

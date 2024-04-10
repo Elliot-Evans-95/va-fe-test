@@ -18,21 +18,6 @@ describe("<FilterSearchItemComponent>", () => {
     jest.clearAllMocks();
   });
 
-  test("search results item is rendered with a checkbox", () => {
-    render(
-      <FilterSearchItemComponent
-        checkboxChangeCallback={mockCheckboxChangeCallback}
-        item={mockFilterSearchData}
-      />,
-    );
-
-    const checkbox = screen.getByRole("label", {
-      name: "price-per-person-5000-to-99999",
-    });
-
-    expect(checkbox).toBeInTheDocument();
-  });
-
   test("search results item display name is rendered with a checkbox", () => {
     render(
       <FilterSearchItemComponent
@@ -41,11 +26,9 @@ describe("<FilterSearchItemComponent>", () => {
       />,
     );
 
-    const checkbox = screen.getByRole("label", {
-      name: "price-per-person-5000-to-99999",
-    });
+    const checkbox = screen.getByLabelText("Over £5,000");
 
-    expect(checkbox.textContent).toBe("Over £5000");
+    expect(checkbox).toBeInTheDocument();
   });
 
   test("clicking on a search results item triggers a callback", () => {
@@ -56,12 +39,65 @@ describe("<FilterSearchItemComponent>", () => {
       />,
     );
 
-    const checkbox = screen.getByRole("label", {
-      name: "price-per-person-5000-to-99999",
-    });
+    const checkbox = screen.getByLabelText("Over £5,000");
 
     fireEvent.click(checkbox);
 
-    expect(mockCheckboxChangeCallback).toBeCalledWith("");
+    expect(mockCheckboxChangeCallback).toBeCalledWith(
+      true,
+      "PRICE_PER_PERSON",
+      [5000, 99_999],
+    );
+  });
+
+  test("clicking on a search results item checks the checkbox", () => {
+    render(
+      <FilterSearchItemComponent
+        checkboxChangeCallback={mockCheckboxChangeCallback}
+        item={mockFilterSearchData}
+      />,
+    );
+
+    const checkbox = screen.getByLabelText<HTMLInputElement>("Over £5,000");
+
+    fireEvent.click(checkbox);
+
+    expect(checkbox.checked).toBe(true);
+  });
+
+  test("clicking on a search results item twice triggers the callback with unchecked data", () => {
+    render(
+      <FilterSearchItemComponent
+        checkboxChangeCallback={mockCheckboxChangeCallback}
+        item={mockFilterSearchData}
+      />,
+    );
+
+    const checkbox = screen.getByLabelText<HTMLInputElement>("Over £5,000");
+
+    fireEvent.click(checkbox);
+    fireEvent.click(checkbox);
+
+    expect(mockCheckboxChangeCallback).toHaveBeenLastCalledWith(
+      false,
+      "PRICE_PER_PERSON",
+      [5000, 99_999],
+    );
+  });
+
+  test("clicking on a search results item twice un-checks the checkbox", () => {
+    render(
+      <FilterSearchItemComponent
+        checkboxChangeCallback={mockCheckboxChangeCallback}
+        item={mockFilterSearchData}
+      />,
+    );
+
+    const checkbox = screen.getByLabelText<HTMLInputElement>("Over £5,000");
+
+    fireEvent.click(checkbox);
+    fireEvent.click(checkbox);
+
+    expect(checkbox.checked).toBe(false);
   });
 });
