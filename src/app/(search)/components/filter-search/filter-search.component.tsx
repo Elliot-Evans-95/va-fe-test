@@ -71,10 +71,10 @@ export function FilterSearchComponent({
         <legend>Hotel facilities</legend>
 
         <ul className={styles.filterSearch__fieldsetList}>
-          {filterSearchData.hotelFacilities.map((pricePerPersonItem) => (
-            <li key={pricePerPersonItem.id}>
+          {filterSearchData.hotelFacilities.map((hotelFacility) => (
+            <li key={hotelFacility.id}>
               <FilterSearchItemComponent
-                item={pricePerPersonItem}
+                item={hotelFacility}
                 checkboxChangeCallback={handleCheckboxChange}
               />
             </li>
@@ -86,10 +86,10 @@ export function FilterSearchComponent({
         <legend>Star Rating</legend>
 
         <ul className={styles.filterSearch__fieldsetList}>
-          {filterSearchData.starRating.map((pricePerPersonItem) => (
-            <li key={pricePerPersonItem.id}>
+          {filterSearchData.starRating.map((starRating) => (
+            <li key={starRating.id}>
               <FilterSearchItemComponent
-                item={pricePerPersonItem}
+                item={starRating}
                 checkboxChangeCallback={handleCheckboxChange}
               />
             </li>

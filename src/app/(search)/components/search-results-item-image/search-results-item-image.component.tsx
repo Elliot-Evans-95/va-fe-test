@@ -28,7 +28,7 @@ export function SearchResultsItemImageComponent({
         className={styles.searchResultsItemImage}
         src={holiday.hotel.content.images[0].RESULTS_CAROUSEL.url}
         alt={
-          holiday.hotel.content.images[0].IMAGE_DESCRIPTION ??
+          holiday.hotel.content.images[0].IMAGE_DESCRIPTION ||
           `Photo of ${holiday.hotel.name} hotel`
         }
         width={460}

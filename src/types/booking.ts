@@ -62,6 +62,7 @@ export interface HotelContent {
 export interface HotelImage {
   RESULTS_CAROUSEL: Image;
   IMAGE_DESCRIPTION: string;
+  MOBILE_MAIN: { url: string };
 }
 
 export interface Image {

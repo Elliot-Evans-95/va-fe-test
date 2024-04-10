@@ -134,9 +134,9 @@ export const filterSearchData: FilterSearchData = {
     },
     {
       id: 5,
-      name: "1-star-rating",
-      displayName: "1 Star",
-      value: "1",
+      name: "Villas-star-rating",
+      displayName: "Villas",
+      value: "Villas",
       type: "STAR_RATING",
     },
   ],

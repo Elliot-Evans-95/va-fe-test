@@ -18,6 +18,11 @@ const defaultTime = "T00:00:00";
 export const stringToDisplayDateString = (textString: string) => {
   const date = new Date(`${textString}${defaultTime}`);
   const year = date.getFullYear();
+
+  if (Number.isNaN(year)) {
+    return textString;
+  }
+
   const currentDay = date.getDate();
   const day = currentDay < 10 ? `0${currentDay}` : currentDay;
   const month = abbreviatedMonths[date.getMonth()];

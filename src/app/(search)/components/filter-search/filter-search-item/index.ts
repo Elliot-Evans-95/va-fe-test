@@ -1,1 +1,1 @@
-export { FilterSearchItemComponent } from "./filter-search-item";
+export { FilterSearchItemComponent } from "./filter-search-item.component";

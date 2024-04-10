@@ -1,4 +1,4 @@
-import { filterHolidaysResultsByAppliedFilters } from "@/utils/reducer/filter-holidays-results-by-applied-filters";
+import { filterHolidaysResultsByAppliedFilters } from "./filter-holidays-results-by-applied-filters";
 import {
   SearchResultsAction,
   SearchResultsState,
@@ -10,11 +10,19 @@ export function searchReducer(
 ): SearchResultsState {
   switch (action.type) {
     case "ADD_PRICE_PER_PERSON_FILTER": {
+      const appliedFilterExists = state.appliedFilters.pricePerPerson.some(
+        (filter) => {
+          const [min, max] = filter;
+          const [minToBeRemoved, maxToBeRemoved] = action.pricePerPerson;
+
+          return min == minToBeRemoved && max == maxToBeRemoved;
+        },
+      );
+
       const appliedFilters = {
-        pricePerPerson: [
-          ...state.appliedFilters.pricePerPerson,
-          action.pricePerPerson,
-        ],
+        pricePerPerson: appliedFilterExists
+          ? state.appliedFilters.pricePerPerson
+          : [...state.appliedFilters.pricePerPerson, action.pricePerPerson],
         hotelFacilities: state.appliedFilters.hotelFacilities,
         starRating: state.appliedFilters.starRating,
       };
@@ -62,12 +70,15 @@ export function searchReducer(
     }
 
     case "ADD_HOTEL_FACILITIES_FILTER": {
+      const appliedFilterExists = state.appliedFilters.hotelFacilities.some(
+        (filter) => filter.toLowerCase() === action.facility.toLowerCase(),
+      );
+
       const appliedFilters = {
         pricePerPerson: state.appliedFilters.pricePerPerson,
-        hotelFacilities: [
-          ...state.appliedFilters.hotelFacilities,
-          action.facility,
-        ],
+        hotelFacilities: appliedFilterExists
+          ? state.appliedFilters.hotelFacilities
+          : [...state.appliedFilters.hotelFacilities, action.facility],
         starRating: state.appliedFilters.starRating,
       };
 
@@ -110,10 +121,16 @@ export function searchReducer(
     }
 
     case "ADD_STAR_RATING_FILTER": {
+      const appliedFilterExists = state.appliedFilters.starRating.includes(
+        action.rating,
+      );
+
       const appliedFilters = {
         pricePerPerson: state.appliedFilters.pricePerPerson,
         hotelFacilities: state.appliedFilters.hotelFacilities,
-        starRating: [...state.appliedFilters.starRating, action.rating],
+        starRating: appliedFilterExists
+          ? state.appliedFilters.starRating
+          : [...state.appliedFilters.starRating, action.rating],
       };
 
       return {

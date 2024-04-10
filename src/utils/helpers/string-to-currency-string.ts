@@ -3,5 +3,5 @@ const currencyFormat = new Intl.NumberFormat("en-GB", {
   currency: "GBP",
 });
 
-export const stringToCurrencyString = (numberString: number) =>
-  currencyFormat.format(numberString);
+export const stringToCurrencyString = (price: number) =>
+  currencyFormat.format(price);

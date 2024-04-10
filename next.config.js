@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const isProduction = process.env.NODE_ENV === "production";
 
 // eslint-disable-next-line unicorn/prefer-module
@@ -15,6 +17,9 @@ const nextConfig = {
   images: {
     loader: "custom",
     loaderFile: "./src/utils/loaders/image-loader.ts",
+  },
+  experimental: {
+    forceSwcTransforms: true,
   },
   async headers() {
     return [

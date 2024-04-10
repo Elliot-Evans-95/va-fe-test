@@ -20,7 +20,7 @@ export function SearchResultsItemComponent({
   isDesktop,
 }: SearchResultsItemComponentProperties) {
   return (
-    <div key={holiday.hotel.id} className={styles.searchResultItem__holiday}>
+    <div className={styles.searchResultItem__holiday}>
       <div className={styles.searchResultItem__holiday____overview}>
         <h3 className={styles.searchResultItem__holiday____overviewTitle}>
           {holiday.hotel.name}
@@ -48,7 +48,7 @@ export function SearchResultsItemComponent({
           <dd
             className={styles.searchResultItem__holiday____detailsDescription}
           >
-            <em>{holiday.hotel.content.vRating}</em> out of 5 rating
+            <em>{holiday.hotel.content.starRating}</em> out of 5 rating
           </dd>
 
           <dt className={styles.searchResultItem__holiday____detailsTerm}>
